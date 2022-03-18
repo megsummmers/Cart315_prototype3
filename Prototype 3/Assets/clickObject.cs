@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class clickObject : MonoBehaviour
 {
+  AudioSource outside_music;
+  AudioSource inside_music;
   public Text txt;
   bool motelAnimation = false;
   public GameObject key;
@@ -28,6 +30,10 @@ public class clickObject : MonoBehaviour
       roomPos[1] = new Vector3(-17.0f, 5.0f, 7.0f);
       roomPos[2] = new Vector3(-34.0f, 5.0f, 7.0f);
       roomPos[3] = new Vector3(-51.0f, 5.0f, 7.0f);
+
+      //initialize audio sources;
+      outside_music = GetComponent<AudioSource>();
+      inside_music = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -42,6 +48,8 @@ public class clickObject : MonoBehaviour
           transform.position = new Vector3(0, 5, 7);
           motelAnimation = false;
           txt.text = "You find the main desk but there doesn't seem to be anyone here, better look around for some information.";
+          outside_music.mute = !outside_music.mute;
+          inside_music.mute = !inside_music.mute;
         }
       }
       //bring key to Camera
